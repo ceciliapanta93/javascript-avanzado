@@ -1,9 +1,4 @@
 class Pokemon {
-  constructor() {
-    this.list = [];
-    this.selected = {};
-  }
-
   async getList() {
     const response = await fetch('https://pokeapi.co/api/v2/generation/1/', {
       method: 'GET'
@@ -19,34 +14,18 @@ class Pokemon {
     const data = await response.json();
     return data;
   }
-
-  setSelected (pokemon) {
-    this.selected = pokemon
-  }
 }
 
-const pokemon = new Pokemon();
+
 
 const selectPokemon = document.querySelector('.js-select-pokemon')
 const detailPokemon = document.querySelector('.js-pokemon-detail')
-const optionPokemonName = '.js-option-pokemon'
 
-const optionDefault = '<option value="" class="js-option-pokemon">Elige un pokemon</option>'
+const optionDefault = '<option value="" >Elige un pokemon</option>'
 const optionList = ''
 const optionPokemon = (pokemon) => `
-  <option data="${pokemon.url}" class="js-option-pokemon">${pokemon.name}</option>
+  <option data="${pokemon.url}" >${pokemon.name}</option>
 `
-
-pokemon.getList().then((data) => {
-  const pokemonList = data.pokemon_species;
-  let options = ''
-  pokemonList.forEach((pokemon) => {
-    options = options + optionPokemon(pokemon)
-  })
-  const content = `${optionDefault}${options}`
-  selectPokemon.innerHTML = content;
-})
-
 
 const handleChange = (e) => {
   const element = e.currentTarget
@@ -69,4 +48,16 @@ const templateDetail = (pokemon) => `
   <img style="width: 110px;" src="${pokemon.imgSrc}" alt="${pokemon.imgSrc}">
 `
 
-selectPokemon.addEventListener('change', handleChange, false)
+selectPokemon.addEventListener('change', handleChange, false);
+
+const pokemon = new Pokemon();
+
+pokemon.getList().then((data) => {
+  const pokemonList = data.pokemon_species;
+  let options = ''
+  pokemonList.forEach((pokemon) => {
+    options = options + optionPokemon(pokemon)
+  })
+  const content = `${optionDefault}${options}`
+  selectPokemon.innerHTML = content;
+})
