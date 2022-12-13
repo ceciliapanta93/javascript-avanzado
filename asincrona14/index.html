@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="app">
+    <div
+        ng-controller="formCtrl"
+    >
+        <form
+            ng-submit="handleSubmit()"
+        >
+
+            <label for="code">Código del empleado:</label>
+            <input
+                id="code"
+                type="text"
+                ng-model="code"
+            /><br>
+            <label for="hour">Horas trabajadas:</label>
+            <input
+                id="hour"
+                type="number"
+                ng-model="hour"
+            /><br>
+            <label for="priceHour">Precio por hora</label>
+            <input
+                id="priceHour"
+                type="number"
+                ng-model="priceHour"
+            /><br>
+            <button type="submit">Calcular Sueldo básico</button>
+        </form>
+        <br>
+        <pre>Sueldo básico: {{salaryBasic}}</pre>
+        <pre>Descuento: {{discount}}</pre>
+        <pre>Sueldo neto: {{salaryNeto}}</pre>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
