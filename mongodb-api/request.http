@@ -13,6 +13,9 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:9000/api/clientes HTTP/1.1
+
+###
 GET http://localhost:9000/api/clientes/639c981c02b4ef85d59451e7 HTTP/1.1
 
 ###
@@ -28,5 +31,5 @@ Content-Type: application/json
     "estado": "test state",
     "fecha_nacimiento": "21/21/1991"
 }
-
-DELETE http://localhost:9000/api/clientes/639c981c02b4ef85d59451e7 HTTP/1.1
+###
+DELETE http://localhost:9000/api/clientes/639bb35a73f501fc079ad397 HTTP/1.1
